@@ -4,14 +4,22 @@ module.exports = ctx => ({
   dest: '../../vuepress',
   locales: {
     '/': {
+      lang: 'ru-RU',
+      title: 'Илья Клишин',
+      description: 'Авторский проект моего сайта - это здоровый образ мышления и жизни.',
+      sidebar: 'auto'
+    },
+    '/en/': {
       lang: 'en-US',
-      title: 'VuePress',
-      description: 'Vue-powered Static Site Generator'
+      title: 'Илья Клишин',
+      description: 'Авторский проект моего сайта - это здоровый образ мышления и жизни.',
+      sidebar: 'auto'
     },
     '/zh/': {
-      lang: 'zh-CN',
-      title: 'VuePress',
-      description: 'Vue 驱动的静态网站生成器'
+      lang: 'zh-ZH',
+      title: 'Илья Клишин',
+      description: 'Авторский проект моего сайта - это здоровый образ мышления и жизни.',
+      sidebar: 'auto'
     }
   },
   head: [
@@ -28,7 +36,9 @@ module.exports = ctx => ({
   theme: '@vuepress/vue',
   themeConfig: {
     repo: 'vuejs/vuepress',
-    editLinks: true,
+    editLinks: false,
+    sidebar: 'auto',
+    displayAllHeaders: true,
     docsDir: 'packages/docs/docs',
     // #697 Provided by the official algolia team.
     algolia: ctx.isProd ? ({
@@ -38,6 +48,20 @@ module.exports = ctx => ({
     smoothScroll: true,
     locales: {
       '/': {
+        label: 'Русский',
+        selectText: 'Языки',
+        ariaLabel: 'Выбрать язык',
+        editLinkText: 'Изменить этот текст на GitHub',
+        lastUpdated: 'Последнее изменение',
+        nav: require('./nav/ru'),
+        sidebar: {
+          '/ru/api/': getApiSidebar(),
+          '/ru/guide/': getGuideSidebar('指南', '深入'),
+          '/ru/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
+          '/ru/theme/': getThemeSidebar('主题', '介绍')
+        }
+      },
+      '/en/': {
         label: 'English',
         selectText: 'Languages',
         ariaLabel: 'Select language',
@@ -45,18 +69,18 @@ module.exports = ctx => ({
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
         sidebar: {
-          '/api/': getApiSidebar(),
-          '/guide/': getGuideSidebar('Guide', 'Advanced'),
-          '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
-          '/theme/': getThemeSidebar('Theme', 'Introduction')
+          '/en/api/': getApiSidebar(),
+          '/en/guide/': getGuideSidebar('Guide', 'Advanced'),
+          '/en/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
+          '/en/theme/': getThemeSidebar('Theme', 'Introduction')
         }
       },
       '/zh/': {
-        label: '简体中文',
-        selectText: '选择语言',
-        ariaLabel: '选择语言',
-        editLinkText: '在 GitHub 上编辑此页',
-        lastUpdated: '上次更新',
+        label: '插件 官方插件',
+        selectText: 'Languages',
+        ariaLabel: 'Select language',
+        editLinkText: 'Edit this page on GitHub',
+        lastUpdated: 'Last Updated',
         nav: require('./nav/zh'),
         sidebar: {
           '/zh/api/': getApiSidebar(),
@@ -91,6 +115,7 @@ module.exports = ctx => ({
   ],
   extraWatchFiles: [
     '.vuepress/nav/en.js',
+    '.vuepress/nav/ru.js',
     '.vuepress/nav/zh.js'
   ]
 })

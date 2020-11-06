@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # Getting Started
 
 ## Prerequisites
@@ -41,13 +45,13 @@ Once it is complete, you should see your new VuePress site scaffolded in your di
 
 This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
 
-1. Create and change into a new directory
+### 1. Create and change into a new directory
 
    ```bash
    mkdir vuepress-starter && cd vuepress-starter
    ```
 
-2. Initialize with your preferred package manager
+### 2. Initialize with your preferred package manager
 
    <code-group>
    <code-block title="YARN" active>
